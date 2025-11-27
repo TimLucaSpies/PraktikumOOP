@@ -1,4 +1,4 @@
-package gui;
+package gui.Teeladen;
 
 import business.TeeladenModel;
 import javafx.event.ActionEvent;
@@ -17,8 +17,9 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import ownUtil.MeldungsfensterAnzeiger;
+import ownUtil.Observer;
 
-public class TeeladenView {
+public class TeeladenView{
 	
 	// Attribute / Objekte
 	private TeeladenModel tm;
@@ -174,7 +175,7 @@ public class TeeladenView {
        	"Fehler", meldung).zeigeMeldungsfensterAn();
    }
    
-	private void zeigeTeesorteAn() {
+	public void zeigeTeesorteAn() {
 		if (tm.getTs() != null) {
 			txtAnzeige.setText(tm.getTs().gibTeesorteZurueck(' '));
 		} else {
