@@ -14,7 +14,11 @@ public class Teesorte {
       	this.bezeichnung = bezeichnung;
        	this.kategorie = kategorie;
        	this.mitKoffein = mitKoffein;
-       	this.enthalteneKraeuter = enthalteneKraeuter;
+       	if(enthalteneKraeuter!=null) {
+       		this.enthalteneKraeuter = enthalteneKraeuter;
+       	}else {
+       		throw new IllegalArgumentException("");
+       	}
     }
 
 	public int getIdentnummer() {
@@ -70,7 +74,7 @@ public class Teesorte {
   		return this.getIdentnummer() +""+ trenner 
   			+ this.getBezeichnung() + trenner
   			+ this.getKategorie() + trenner
-  		    + this.getMitKoffein() + trenner + "\n"
+  		    + this.getMitKoffein() + trenner 
   		    + this.getEnthalteneKraeuterAlsString(trenner) + "\n";
   	}
 }

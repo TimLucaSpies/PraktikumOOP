@@ -6,6 +6,7 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Vector;
 
 import fileCreatorsSpies.ConcreteReaderCreatorSpies;
@@ -16,7 +17,7 @@ import ownUtil.Observer;
 
 public class TeeladenModel implements Observable {
 
-	private Teesorte ts;
+	private ArrayList <Teesorte> ts = new ArrayList <Teesorte>();
 	private static TeeladenModel instanz = null;
 	private Vector<Observer> obs = new Vector<Observer>();
 
@@ -33,16 +34,17 @@ public class TeeladenModel implements Observable {
 
 	public void createTeesorte(int identnummer, String bezeichnung, String kategorie, String mitKoffein,
 			String[] enthalteneKraeuter) {
-		this.ts = new Teesorte(identnummer, bezeichnung, kategorie, mitKoffein, enthalteneKraeuter);
+		Teesorte neu = new Teesorte(identnummer, bezeichnung, kategorie, mitKoffein, enthalteneKraeuter);
+		addTeesorte(neu);
 		notifyObserver();
 	}
 
-	public Teesorte getTs() {
+	public ArrayList <Teesorte> getTs() {
 		return ts;
 	}
 
-	public void setTs(Teesorte ts) {
-		this.ts = ts;
+	public void addTeesorte(Teesorte ts) {
+		this.ts.add(ts);
 	}
 
 	// Methoden / Datenverarbeitung
@@ -58,7 +60,10 @@ public class TeeladenModel implements Observable {
 
 	public void schreibeTeesInCsvDatei() throws IOException {
 		BufferedWriter aus = new BufferedWriter(new FileWriter("TeesortenAusgabe.csv", true));
-		aus.write(ts.gibTeesorteZurueck(';'));
+		String text = "";
+		for(Teesorte sorte: ts) {
+			aus.write(sorte.gibTeesorteZurueck(';'));
+		}
 		aus.close();
 	}
 

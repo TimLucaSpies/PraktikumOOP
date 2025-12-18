@@ -58,6 +58,6 @@ public class TeeladenControl implements Observer{
 
 	@Override
 	public void update() {
-		this.tv.zeigeTeesorteAn();
+		this.tv.zeigeTeesAn();
 	}
 }
