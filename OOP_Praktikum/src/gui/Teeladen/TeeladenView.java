@@ -1,7 +1,7 @@
 package gui.Teeladen;
 
-import business.TeeladenModel;
-import business.Teesorte;
+import business.Tees.TeeladenModel;
+import business.Tees.Teesorte;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;

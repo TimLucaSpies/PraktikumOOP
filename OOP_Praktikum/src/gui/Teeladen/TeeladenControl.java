@@ -2,7 +2,7 @@ package gui.Teeladen;
 
 import java.io.IOException;
 
-import business.TeeladenModel;
+import business.Tees.TeeladenModel;
 import javafx.stage.Stage;
 import ownUtil.Observer;
 
